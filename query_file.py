@@ -3,7 +3,7 @@ Runs the query algorithm
 """
 
 from RAPTOR.hypraptor import hypraptor
-from RAPTOR.one_to_many_rraptor import onetomany_rraptor
+# from RAPTOR.one_to_many_rraptor import onetomany_rraptor
 from RAPTOR.rraptor import rraptor
 from RAPTOR.std_raptor import raptor
 from TBTR.hyptbtr import hyptbtr
@@ -61,12 +61,12 @@ def main() -> None:
             else:
                 print(f"Routes required to cover optimal journeys are {output}")
         elif variant == 2:
-            output = onetomany_rraptor(SOURCE, DESTINATION_LIST, d_time_groups, MAX_TRANSFER, WALKING_FROM_SOURCE, CHANGE_TIME_SEC,
-                                       PRINT_ITINERARY, OPTIMIZED, routes_by_stop_dict, stops_dict, stoptimes_dict, footpath_dict, idx_by_route_stop_dict)
-            if OPTIMIZED == 1:
-                print(f"Trips required to cover optimal journeys are {output}")
-            else:
-                print(f"Routes required to cover optimal journeys are {output}")
+            pass
+            # output = onetomany_rraptor(SOURCE, DESTINATION_LIST, d_time_groups, MAX_TRANSFER, WALKING_FROM_SOURCE, CHANGE_TIME_SEC, PRINT_ITINERARY, OPTIMIZED, routes_by_stop_dict, stops_dict, stoptimes_dict, footpath_dict, idx_by_route_stop_dict)
+            # if OPTIMIZED == 1:
+            #     print(f"Trips required to cover optimal journeys are {output}")
+            # else:
+            #     print(f"Routes required to cover optimal journeys are {output}")
         elif variant == 3:
             output = hypraptor(SOURCE, DESTINATION, D_TIME, MAX_TRANSFER, WALKING_FROM_SOURCE, CHANGE_TIME_SEC, PRINT_ITINERARY,
                                stop_out, route_groups, routes_by_stop_dict, stops_dict, stoptimes_dict, footpath_dict, idx_by_route_stop_dict)
@@ -147,7 +147,7 @@ if __name__ == "__main__":
 
         SOURCE = int(input("Enter source stop id\n: "))
         DESTINATION = int(input("Enter destination stop id\n: "))
-        D_TIME = input("Enter departure time. Format: YYYY-MM-DD HH-MM-SS (24 hour format)\n: ")
+        D_TIME = pd.to_datetime(input("Enter departure time. Format: YYYY-MM-DD HH:MM:SS (24 hour format)\n: "))
         MAX_TRANSFER = int(input("Maximum transfer limit\n: "))
         WALKING_FROM_SOURCE = int(input("Press 1 to allow walking from source, else 0\n: "))
         CHANGE_TIME_SEC = int(input("Enter change time (in seconds) \n: "))
